@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+
+  --color-ink: #12141a;
+  --color-ink-soft: #444a58;
+  --color-ink-mute: #646b7a;
+  --color-mist: #f2f3f5;
+  --color-line: #e4e6ea;
+  --color-accent: #3a3ae8;
+  --color-accent-dark: #2b2bc4;
+  --color-accent-soft: #ececff;
+  --color-sale: #d9381e;
+  --color-ok: #138a55;
+  --color-star: #f5a623;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-ink antialiased;
+    font-size: 15px;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: var(--color-accent-soft);
+  }
+  input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ───────── Type scale (1.25 ratio, fluid at the top end) ───────── */
+@layer components {
+  .display {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 1.4rem + 5vw, 4.9rem);
+    font-weight: 450;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 1.2rem + 1.8vw, 2.6rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+  .heading {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .lede {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--color-ink-soft);
+  }
+  .caption {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--color-ink-mute);
+  }
+  .price {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
